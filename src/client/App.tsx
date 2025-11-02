@@ -1,6 +1,4 @@
-import { Toaster } from "sonner";
 
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import DashboardLayout from "./components/DashboardLayout";
@@ -10,6 +8,9 @@ import Movimentacoes from "./pages/Movimentacoes";
 import Relatorios from "./pages/Relatorios";
 import NotFound from "./pages/Home";
 import { TooltipProvider } from "./components/ui/tooltip";
+import { Switch } from "./components/ui/switch";
+import { Route } from "wouter";
+import { Toaster } from "sonner";
 
 function Router() {
   return (

@@ -1,8 +1,9 @@
 import { useState, useMemo } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useInventoryStore } from '@/lib/store';
+import { useInventoryStore } from '../lib/store';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Line, Pie, Cell, BarChart, LineChart, PieChart } from 'recharts';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+
 
 const COLORS = ['#c9a961', '#d4b896', '#8b6f47', '#6b5636'];
 

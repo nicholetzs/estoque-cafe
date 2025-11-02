@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter';
-import { Button } from '@/components/ui/button';
 import { Home as HomeIcon } from 'lucide-react';
+import { Button } from '../components/ui/button';
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
