@@ -5,7 +5,7 @@ export const getClients = () => {
 
     const sheet = SpreadsheetApp.openById('1RkayP5I09BmJmT6A77nEQdbU0g4wedsxy0KRitpSKSY');
     const sheetData = sheet.getSheetByName('controle de produtos'); 
-    const data = sheetData.getDataRange().getValues();
+    const data = sheetData?.getDataRange().getValues();
 
     interface data {
         id: string;
@@ -14,6 +14,10 @@ export const getClients = () => {
         price: number;
     }
     const clients: data[] = [];
+
+    if (!data) {
+        return console.log('No data found.');
+    }
 
     for (let i = 1; i < data.length; i++) {
         const row = data[i];
@@ -24,7 +28,7 @@ export const getClients = () => {
             price: Number(row[3]),
         });
     }
-    Logger.log(clients, "clientes aqui");
+    Logger.log(clients);
     return clients;
 
 };

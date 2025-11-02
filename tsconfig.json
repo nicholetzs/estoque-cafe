@@ -1,7 +1,5 @@
 {
   "include": ["src"],
-  "types": ["google-apps-script"],
-
   "compilerOptions": {
     "incremental": true,
     "noEmit": true,
@@ -13,7 +11,7 @@
     "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
     "baseUrl": ".",
-    "types": ["node", "vite/client"],
+    "types": ["node", "vite/client", "google-apps-script"],
     "paths": {
       "@/*": ["./src/*"],
       "@shared/*": ["./src/shared/*"],
