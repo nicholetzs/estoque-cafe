@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import { Menu, X, Coffee } from "lucide-react";
 import { Button } from "./ui/button";
 import { useNavigate } from "react-router-dom";
@@ -48,20 +47,17 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <nav className="flex-1 px-4 py-6 space-y-2">
           {menuItems.map(item => (
             <Button
-              variant="ghost"
-              size="sm"
-              className="w-full mb-2"
-              onClick={() => navigate(item.href)}
               key={item.href}
+              variant="ghost"
+              className="w-full p-0"
+              onClick={() => navigate(item.href)}
             >
-              <a className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-muted transition-colors group">
-                <span className="text-xl">{item.icon}</span>
-                {sidebarOpen && (
-                  <span className="text-sm font-medium group-hover:text-accent transition-colors">
-                    {item.label}
-                  </span>
-                )}
-              </a>
+              <span className="text-xl">{item.icon}</span>
+              {sidebarOpen && (
+                <span className="text-sm font-medium group-hover:text-accent transition-colors">
+                  {item.label}
+                </span>
+              )}
             </Button>
           ))}
         </nav>
