@@ -1,6 +1,8 @@
 function doGet(_e: any) {
-  return HtmlService.createHtmlOutputFromFile("html/index");
+  return HtmlService.createHtmlOutputFromFile("html/index.html");
 }
+
+//aaa
 export const getClients = () => {
 
     const sheet = SpreadsheetApp.openById('1RkayP5I09BmJmT6A77nEQdbU0g4wedsxy0KRitpSKSY');
