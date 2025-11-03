@@ -1,21 +1,48 @@
-import { useState, useMemo } from 'react';
-import { useInventoryStore } from '../lib/store';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Line, Pie, Cell, BarChart, LineChart, PieChart } from 'recharts';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { useState, useMemo } from "react";
+import { useInventoryStore } from "../lib/store";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import {
+  ResponsiveContainer,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar,
+  Line,
+  Pie,
+  Cell,
+  BarChart,
+  LineChart,
+  PieChart,
+} from "recharts";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "../components/ui/tabs";
 
-
-const COLORS = ['#c9a961', '#d4b896', '#8b6f47', '#6b5636'];
+const COLORS = ["#c9a961", "#d4b896", "#8b6f47", "#6b5636"];
 
 export default function Dashboard() {
   const { products, movements } = useInventoryStore();
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  //const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
   const [selectedYear] = useState(new Date().getFullYear());
 
   // Dados agregados
   const stats = useMemo(() => {
     const totalProducts = products.length;
-    const totalValue = products.reduce((sum, p) => sum + (p.quantity * p.unitPrice), 0);
+    const totalValue = products.reduce(
+      (sum, p) => sum + p.quantity * p.unitPrice,
+      0
+    );
     const totalMovements = movements.length;
     const lowStockProducts = products.filter(p => p.quantity < 10).length;
 
@@ -24,14 +51,31 @@ export default function Dashboard() {
 
   // Dados mensais
   const monthlyData = useMemo(() => {
-    const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const months = [
+      "Jan",
+      "Fev",
+      "Mar",
+      "Abr",
+      "Mai",
+      "Jun",
+      "Jul",
+      "Ago",
+      "Set",
+      "Out",
+      "Nov",
+      "Dez",
+    ];
     const data = months.map((month, idx) => {
       const monthMovements = movements.filter(m => {
         const date = new Date(m.date);
         return date.getMonth() === idx && date.getFullYear() === selectedYear;
       });
-      const entrada = monthMovements.filter(m => m.type === 'entrada').reduce((sum, m) => sum + m.quantity, 0);
-      const saida = monthMovements.filter(m => m.type === 'saida').reduce((sum, m) => sum + m.quantity, 0);
+      const entrada = monthMovements
+        .filter(m => m.type === "entrada")
+        .reduce((sum, m) => sum + m.quantity, 0);
+      const saida = monthMovements
+        .filter(m => m.type === "saida")
+        .reduce((sum, m) => sum + m.quantity, 0);
       return { month, entrada, saida };
     });
     return data;
@@ -39,7 +83,7 @@ export default function Dashboard() {
 
   // Dados por categoria
   const categoryData = useMemo(() => {
-    const categories = ['Café', 'Pimenta', 'Cacau', 'Outros'];
+    const categories = ["Café", "Pimenta", "Cacau", "Outros"];
     return categories.map(cat => {
       const total = products
         .filter(p => p.category === cat)
@@ -62,50 +106,76 @@ export default function Dashboard() {
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold text-accent mb-2">Dashboard</h1>
-        <p className="text-muted-foreground">Visão geral do seu controle de estoque</p>
+        <p className="text-muted-foreground">
+          Visão geral do seu controle de estoque
+        </p>
       </div>
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <Card className="bg-card border-border hover:border-accent transition-colors">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total de Produtos</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Total de Produtos
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-accent">{stats.totalProducts}</div>
-            <p className="text-xs text-muted-foreground mt-1">Produtos cadastrados</p>
+            <div className="text-3xl font-bold text-accent">
+              {stats.totalProducts}
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Produtos cadastrados
+            </p>
           </CardContent>
         </Card>
 
         <Card className="bg-card border-border hover:border-accent transition-colors">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Valor Total</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Valor Total
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-accent">R$ {stats.totalValue.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground mt-1">Valor do estoque</p>
+            <div className="text-3xl font-bold text-accent">
+              R$ {stats.totalValue.toFixed(2)}
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Valor do estoque
+            </p>
           </CardContent>
         </Card>
 
         <Card className="bg-card border-border hover:border-accent transition-colors">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Movimentações</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Movimentações
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-accent">{stats.totalMovements}</div>
-            <p className="text-xs text-muted-foreground mt-1">Total de movimentos</p>
+            <div className="text-3xl font-bold text-accent">
+              {stats.totalMovements}
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Total de movimentos
+            </p>
           </CardContent>
         </Card>
 
         <Card className="bg-card border-border hover:border-accent transition-colors">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Estoque Baixo</CardTitle>
+            <CardTitle className="text-sm font-medium text-muted-foreground">
+              Estoque Baixo
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className={`text-3xl font-bold ${stats.lowStockProducts > 0 ? 'text-red-500' : 'text-green-500'}`}>
+            <div
+              className={`text-3xl font-bold ${stats.lowStockProducts > 0 ? "text-red-500" : "text-green-500"}`}
+            >
               {stats.lowStockProducts}
             </div>
-            <p className="text-xs text-muted-foreground mt-1">Produtos com alerta</p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Produtos com alerta
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -133,8 +203,11 @@ export default function Dashboard() {
                   <XAxis dataKey="month" stroke="#a89878" />
                   <YAxis stroke="#a89878" />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#2a2420', border: '1px solid #3a3530' }}
-                    labelStyle={{ color: '#e8dcc8' }}
+                    contentStyle={{
+                      backgroundColor: "#2a2420",
+                      border: "1px solid #3a3530",
+                    }}
+                    labelStyle={{ color: "#e8dcc8" }}
                   />
                   <Legend />
                   <Bar dataKey="entrada" fill="#c9a961" name="Entradas" />
@@ -159,12 +232,27 @@ export default function Dashboard() {
                   <XAxis dataKey="month" stroke="#a89878" />
                   <YAxis stroke="#a89878" />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#2a2420', border: '1px solid #3a3530' }}
-                    labelStyle={{ color: '#e8dcc8' }}
+                    contentStyle={{
+                      backgroundColor: "#2a2420",
+                      border: "1px solid #3a3530",
+                    }}
+                    labelStyle={{ color: "#e8dcc8" }}
                   />
                   <Legend />
-                  <Line type="monotone" dataKey="entrada" stroke="#c9a961" strokeWidth={2} name="Entradas" />
-                  <Line type="monotone" dataKey="saida" stroke="#8b6f47" strokeWidth={2} name="Saídas" />
+                  <Line
+                    type="monotone"
+                    dataKey="entrada"
+                    stroke="#c9a961"
+                    strokeWidth={2}
+                    name="Entradas"
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="saida"
+                    stroke="#8b6f47"
+                    strokeWidth={2}
+                    name="Saídas"
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </CardContent>
@@ -176,7 +264,9 @@ export default function Dashboard() {
           <Card className="bg-card border-border">
             <CardHeader>
               <CardTitle>Distribuição por Categoria</CardTitle>
-              <CardDescription>Quantidade de produtos em estoque</CardDescription>
+              <CardDescription>
+                Quantidade de produtos em estoque
+              </CardDescription>
             </CardHeader>
             <CardContent className="flex justify-center">
               <ResponsiveContainer width="100%" height={300}>
@@ -192,12 +282,18 @@ export default function Dashboard() {
                     dataKey="value"
                   >
                     {categoryData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={COLORS[index % COLORS.length]}
+                      />
                     ))}
                   </Pie>
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#2a2420', border: '1px solid #3a3530' }}
-                    labelStyle={{ color: '#e8dcc8' }}
+                    contentStyle={{
+                      backgroundColor: "#2a2420",
+                      border: "1px solid #3a3530",
+                    }}
+                    labelStyle={{ color: "#e8dcc8" }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -219,8 +315,11 @@ export default function Dashboard() {
                   <XAxis dataKey="name" stroke="#a89878" />
                   <YAxis stroke="#a89878" />
                   <Tooltip
-                    contentStyle={{ backgroundColor: '#2a2420', border: '1px solid #3a3530' }}
-                    labelStyle={{ color: '#e8dcc8' }}
+                    contentStyle={{
+                      backgroundColor: "#2a2420",
+                      border: "1px solid #3a3530",
+                    }}
+                    labelStyle={{ color: "#e8dcc8" }}
                   />
                   <Bar dataKey="quantity" fill="#c9a961" name="Quantidade" />
                 </BarChart>

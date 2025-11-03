@@ -1,4 +1,4 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import DashboardLayout from "./components/DashboardLayout";
@@ -8,32 +8,35 @@ import Movimentacoes from "./pages/Movimentacoes";
 import Relatorios from "./pages/Relatorios";
 import NotFound from "./pages/Home";
 import { TooltipProvider } from "./components/ui/tooltip";
-import { Switch } from "./components/ui/switch";
-import { Route } from "wouter";
 import { Toaster } from "sonner";
 
-function Router() {
+function AppRoutes() {
   return (
-    <Switch>
-      <Route path={"/"} component={Dashboard} />
-      <Route path={"/produtos"} component={Produtos} />
-      <Route path={"/movimentacoes"} component={Movimentacoes} />
-      <Route path={"/relatorios"} component={Relatorios} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <main className="w-full min-h-screen flex flex-col">
+      <div className="w-full flex-1 flex">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/produtos" element={<Produtos />} />
+          <Route path="/movimentacoes" element={<Movimentacoes />} />
+          <Route path="/relatorios" element={<Relatorios />} />
+          {/* Rota fallback 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </main>
   );
 }
 
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider>
         <TooltipProvider>
           <Toaster />
           <DashboardLayout>
-            <Router />
+            <BrowserRouter>
+              <AppRoutes />
+            </BrowserRouter>
           </DashboardLayout>
         </TooltipProvider>
       </ThemeProvider>
