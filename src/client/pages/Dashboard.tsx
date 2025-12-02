@@ -397,7 +397,7 @@ export default function Dashboard() {
           </TabsContent>
 
           <TabsContent value="annual">
-            <Card className="bg-gradient-to-br from-[#2C1810] to-[#3D2415] border-[#6F4E37] shadow-2xl">
+            <Card className="bg-gradient-to-br from-[#0D0907] via-[#1A0F0A] to-[#0D0907] shadow-2xl">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#E8DCC8]">
                   Tendência Anual - {selectedYear}
