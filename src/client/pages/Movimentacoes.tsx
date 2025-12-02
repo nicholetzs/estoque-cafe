@@ -111,7 +111,7 @@ export default function Movimentacoes() {
     <div className="flex flex-row w-full bg-gradient-to-br from-[#0D0907] via-[#1A0F0A] to-[#0D0907] p-4">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header Premium com Stats */}
-        <div className="flex w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#6F4E37] via-[#8B6F47] to-[#6F4E37] p-10 shadow-2xl">
+        <div className="flex w-full overflow-hidden rounded-2xl bg-gradient-to-r from-[#6F4E37] via-[#8B6F47] to-[#A0826D] p-10 shadow-2xl">
           <div className="flex w-full z-10">
             <div className="flex items-center justify-between mb-6">
               <div>

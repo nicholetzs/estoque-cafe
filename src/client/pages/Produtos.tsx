@@ -164,7 +164,7 @@ export default function Produtos() {
     <div className="min-h-screen bg-gradient-to-br from-[#0D0907] via-[#1A0F0A] to-[#0D0907] p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header Premium */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#6F4E37] via-[#8B6F47] to-[#6F4E37] p-10 shadow-2xl">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#6F4E37] via-[#8B6F47] to-[#A0826D] p-10 shadow-2xl">
           <div className="relative z-10">
             <div className="flex items-center justify-between">
               <div>

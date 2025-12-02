@@ -178,7 +178,7 @@ export default function Dashboard() {
 
         {/* KPI Cards com design */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card className="bg-gradient-to-br from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
+          <Card className="bg-gradient-to-br cursor-pointer from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm font-medium text-[#C4A57B]">
@@ -198,7 +198,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
+          <Card className="bg-gradient-to-br cursor-pointer from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm font-medium text-[#C4A57B]">
@@ -221,7 +221,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
+          <Card className="bg-gradient-to-br cursor-pointer from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm font-medium text-[#C4A57B]">
@@ -255,7 +255,7 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
+          <Card className="bg-gradient-to-br  cursor-pointerfrom-[#2C1810] to-[#3D2415] border-[#6F4E37] hover:border-[#8B6F47] transition-all duration-300 hover:shadow-2xl hover:shadow-[#6F4E37]/20 group">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <CardTitle className="text-sm font-medium text-[#C4A57B]">
