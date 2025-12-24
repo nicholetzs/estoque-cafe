@@ -159,7 +159,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1A0F0A] via-[#2C1810] to-[#1A0F0A] p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0D0907] via-[#1A0F0A] to-[#0D0907] p-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header com gradiente */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#6F4E37] via-[#8B6F47] to-[#A0826D] p-8 shadow-2xl">
